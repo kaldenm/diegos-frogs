@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loader Test</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: white;
+        }
+
+        @keyframes ripple {
+            0% {
+                rx: 3;
+                ry: 1;
+                opacity: 1;
+            }
+            100% {
+                rx: 12;
+                ry: 4;
+                opacity: 0;
+            }
+        }
+
+        .ripple-circle {
+            animation: ripple 2s linear forwards;
+            filter: url(#squiggly);
+        }
+    </style>
+</head>
+<body>
+    <svg width="50" height="40" viewBox="0 0 50 40">
+        <defs>
+            <filter id="squiggly">
+                <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+            </filter>
+        </defs>
+
+        <!-- Front (largest) lily pad -->
+        <ellipse
+            cx="25"
+            cy="30"
+            rx="3"
+            ry="1"
+            fill="none"
+            stroke="black"
+            stroke-width="0.75"
+            class="ripple-circle"
+        />
+        <ellipse
+            cx="25"
+            cy="30"
+            rx="3"
+            ry="1"
+            fill="none"
+            stroke="black"
+            stroke-width="0.75"
+            class="ripple-circle"
+            style="animation-delay: 0.5s"
+        />
+
+        <!-- Middle lily pad -->
+        <ellipse
+            cx="25"
+            cy="20"
+            rx="2.5"
+            ry="0.8"
+            fill="none"
+            stroke="black"
+            stroke-width="0.75"
+            class="ripple-circle"
+            style="animation-delay: 0.7s"
+        />
+        <ellipse
+            cx="25"
+            cy="20"
+            rx="2.5"
+            ry="0.8"
+            fill="none"
+            stroke="black"
+            stroke-width="0.75"
+            class="ripple-circle"
+            style="animation-delay: 1.2s"
+        />
+
+        <!-- Back (smallest) lily pad -->
+        <ellipse
+            cx="25"
+            cy="10"
+            rx="2"
+            ry="0.6"
+            fill="none"
+            stroke="black"
+            stroke-width="0.75"
+            class="ripple-circle"
+            style="animation-delay: 1.4s"
+        />
+        <ellipse
+            cx="25"
+            cy="10"
+            rx="2"
+            ry="0.6"
+            fill="none"
+            stroke="black"
+            stroke-width="0.75"
+            class="ripple-circle"
+            style="animation-delay: 1.9s"
+        />
+    </svg>
+</body>
+</html>
